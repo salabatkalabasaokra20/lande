@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For My Love 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#2b124c,#522b5b,#854f6c,#dfb6b2);
+    overflow-x:hidden;
+    color:white;
+}
+
+/* Animated Background */
+
+.bg-animation{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.bg-animation span{
+    position:absolute;
+    display:block;
+    width:25px;
+    height:25px;
+    background:rgba(255,255,255,0.08);
+    animation:animate 20s linear infinite;
+    bottom:-150px;
+    border-radius:50%;
+}
+
+.bg-animation span:nth-child(1){
+    left:10%;
+    width:80px;
+    height:80px;
+    animation-delay:0s;
+}
+
+.bg-animation span:nth-child(2){
+    left:20%;
+    animation-delay:2s;
+    animation-duration:12s;
+}
+
+.bg-animation span:nth-child(3){
+    left:70%;
+    width:60px;
+    height:60px;
+    animation-delay:4s;
+}
+
+.bg-animation span:nth-child(4){
+    left:40%;
+    width:50px;
+    height:50px;
+    animation-duration:18s;
+}
+
+.bg-animation span:nth-child(5){
+    left:85%;
+    animation-delay:1s;
+}
+
+.bg-animation span:nth-child(6){
+    left:55%;
+    width:90px;
+    height:90px;
+    animation-delay:3s;
+}
+
+@keyframes animate{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+        border-radius:20%;
+    }
+
+    100%{
+        transform:translateY(-1000px) rotate(720deg);
+        opacity:0;
+        border-radius:50%;
+    }
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    text-align:center;
+}
+
+.hero-box{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:60px;
+    border-radius:35px;
+    max-width:800px;
+    animation:fadeIn 2s ease;
+    box-shadow:0 15px 40px rgba(0,0,0,0.35);
+}
+
+.hero h1{
+    font-size:5rem;
+    color:#ffd6ff;
+    margin-bottom:20px;
+    animation:floatText 3s ease-in-out infinite;
+}
+
+.hero p{
+    font-size:1.2rem;
+    line-height:2;
+    color:#f8eaff;
+}
+
+@keyframes floatText{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* BUTTON */
+
+.music-btn{
+    margin-top:35px;
+    padding:16px 40px;
+    border:none;
+    border-radius:50px;
+    background:#c77dff;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 5px 20px rgba(199,125,255,0.5);
+}
+
+.music-btn:hover{
+    transform:scale(1.08);
+    background:#9d4edd;
+}
+
+/* MUSIC PLAYER */
+
+.music-player{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.music-player h2{
+    font-size:3rem;
+    margin-bottom:40px;
+    color:#f3c4fb;
+}
+
+.song-card{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    padding:25px;
+    margin:20px auto;
+    border-radius:25px;
+    max-width:700px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    animation:fadeIn 1.5s ease;
+    transition:0.4s;
+}
+
+.song-card:hover{
+    transform:scale(1.03);
+}
+
+.song-card p{
+    margin-bottom:15px;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+audio{
+    width:100%;
+    border-radius:20px;
+}
+
+/* GALLERY */
+
+.gallery{
+    padding:100px 8%;
+    text-align:center;
+}
+
+.gallery h2{
+    font-size:3rem;
+    margin-bottom:50px;
+    color:#f3c4fb;
+}
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.photo-grid img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:25px;
+    transition:0.5s;
+    opacity:0;
+    animation:showPhotos 1s forwards;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.photo-grid img:hover{
+    transform:scale(1.05) rotate(1deg);
+}
+
+.photo-grid img:nth-child(1){animation-delay:0.2s;}
+.photo-grid img:nth-child(2){animation-delay:0.4s;}
+.photo-grid img:nth-child(3){animation-delay:0.6s;}
+.photo-grid img:nth-child(4){animation-delay:0.8s;}
+.photo-grid img:nth-child(5){animation-delay:1s;}
+.photo-grid img:nth-child(6){animation-delay:1.2s;}
+.photo-grid img:nth-child(7){animation-delay:1.4s;}
+.photo-grid img:nth-child(8){animation-delay:1.6s;}
+
+@keyframes showPhotos{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* LOVE LETTER */
+
+.letter{
+    padding:80px 10%;
+    display:flex;
+    justify-content:center;
+}
+
+.letter-box{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:30px;
+    max-width:850px;
+    line-height:2;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    animation:fadeIn 2s ease;
+}
+
+.letter-box h2{
+    font-size:2.8rem;
+    margin-bottom:20px;
+    color:#f3c4fb;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    color:#f8dfff;
+    font-size:1rem;
+}
+
+/* Floating Hearts */
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.hearts span{
+    position:absolute;
+    color:rgba(255,255,255,0.3);
+    font-size:25px;
+    animation:hearts 8s linear infinite;
+}
+
+@keyframes hearts{
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-10vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.hero-box{
+    padding:35px;
+}
+
+.gallery h2,
+.music-player h2,
+.letter-box h2{
+    font-size:2rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background Animation -->
+<div class="bg-animation">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- Floating Hearts -->
+<div class="hearts">
+    <span style="left:10%; animation-delay:0s;">💜</span>
+    <span style="left:25%; animation-delay:2s;">💜</span>
+    <span style="left:40%; animation-delay:4s;">💜</span>
+    <span style="left:55%; animation-delay:1s;">💜</span>
+    <span style="left:70%; animation-delay:3s;">💜</span>
+    <span style="left:85%; animation-delay:5s;">💜</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-box">
+
+        <h1>Happy </h1>
+		<h1>7th Love!!! 💜</h1>
+
+        <p>
+            Hello mahal! may mga ginawa akong kanta para sayo hehe.
+			Sana magustuhan mo kase kung hindi patayin monalang ako.
+			I've never done something like this but i always knew you deserve
+			this kind of love.You always deserved the better:))
+			
+        </p>
+
+        <button class="music-btn" onclick="scrollToMusic()">
+            🎵 Listen
+        </button>
+
+    </div>
+
+</section>
+
+<!-- MUSIC PLAYER -->
+
+<section class="music-player" id="playlist">
+
+    <h2>ONLY4U 🎶</h2>
+
+    <div class="song-card">
+
+        <p> SALABAT</p>
+
+        <audio controls>
+            <source src="salabat.mp3" type="audio/mp3">
+        </audio>
+
+    </div>
+
+    <div class="song-card">
+
+        <p> KALABASA</p>
+
+        <audio controls>
+            <source src="music2.mp3" type="audio/mp3">
+        </audio>
+
+    </div>
+
+    <div class="song-card">
+
+        <p> OKRA (BONUS) </p>
+
+        <audio controls>
+            <source src="lamiglamigan.mp3" type="audio/mp3">
+        </audio>
+
+    </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery">
+
+    <h2>Throwback Captures 📸</h2>
+
+    <div class="photo-grid">
+
+        <img src="tinoma.jpg">
+        <img src="keith.jpg">
+        <img src="ttrap.jpg">
+        <img src="church.jpg">
+        <img src="yahab.jpg">
+        <img src="arca.jpg">
+        <img src="national.jpg">
+        <img src="motmot.jpg">
+
+    </div>
+
+</section>
+
+<!-- LETTER -->
+
+<section class="letter">
+
+    <div class="letter-box">
+
+        <h2>A Letter For You 💌</h2>
+
+        <p>
+           Hello mahal happy 7th monthsary satin sobrang nakakatuwa dahil
+		   pinapanood ko yung taon na patuloy lang nagpo-progress kasama
+		   ka.Hindi man tayo magkasama sa araw nato eh alam ko na alam 
+		   mo na araw araw nating dala-dala ang isa't-isa,hindi hadlang satin
+		   yung distance na meron tayo:)).
+            <br><br>
+            Pareho parin ang hihilingin ko para satin,kundi gabayan tayo ng panginoon
+			pareho sa relasyon natin at maging nadin sa kanya kanya nating buhay,
+			sana malaman mo love na lagi kong pipiliin ang mapabuti tayo kesa 
+			sa lahat at sana malaman modin na darating din tayo sa point na 
+			mababawasan natong problema na meron tayo ngayon kung
+			ano man yung mga yon.Alam ko di tayo araw araw magiging magkasundo pero 
+			kaya kong sabihin sayo na araw-araw kodin susubukan ang bigyan ka ng 
+			peace at walang hanggang pasensya haha,sana patuloy tayo mag-grow
+			at patuloy nating pahalagahan kung anong meron tayo
+            <br><br>
+            Salamat bebi sa 7 months of love na meron tayo at syempre sa love 
+			na naibibigay mo,naappreciate ko lahat ng gestures mo sakin maliit man
+			o malaki.Thank you,always:))
+            <br><br>
+            Mahal na mahal kita. 💜
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+    Made with love, only for you 💜
+</footer>
+
+<script>
+
+function scrollToMusic(){
+
+    document.getElementById("playlist")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
